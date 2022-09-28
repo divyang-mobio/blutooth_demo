@@ -9,10 +9,10 @@ class Home extends StatelessWidget {
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           MaterialButton(
-              onPressed: () => Navigator.pushNamed(context, 'advertiser'),
+              onPressed: () => Navigator.pushNamed(context, '/advertiser'),
               child: const Text('Host')),
           MaterialButton(
-              onPressed: () => Navigator.pushNamed(context, 'browser'),
+              onPressed: () => Navigator.pushNamed(context, '/browser'),
               child: const Text('Receiver')),
         ]),
       ),

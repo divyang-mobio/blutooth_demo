@@ -10,11 +10,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case '/':
       return MaterialPageRoute(builder: (_) => const Home());
-    case 'browser':
+    case '/browser':
       return MaterialPageRoute(
           builder: (_) =>
               const DevicesListScreen(deviceType: DeviceType.browser));
-    case 'advertiser':
+    case '/advertiser':
       return MaterialPageRoute(
           builder: (_) =>
               const DevicesListScreen(deviceType: DeviceType.advertiser));
