@@ -39,6 +39,8 @@ dependencies:
   device_info: ^2.0.0
   flutter_nearby_connections: ^1.1.1
   flutter_styled_toast: ^2.0.0
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
 
 #  flutter_blue: ^0.8.0
 #  flutter_bluetooth_serial: ^0.4.0
