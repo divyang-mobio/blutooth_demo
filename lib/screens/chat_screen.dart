@@ -68,18 +68,18 @@ class DevicesListScreenState extends State<DevicesListScreen> {
                       children: [
                         Expanded(
                             child: GestureDetector(
-                              onTap: () => _onTabItemListener(device),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(device.deviceName),
-                                    Text(
-                                      getStateName(device.state),
-                                      style: TextStyle(
-                                          color: getStateColor(device.state)),
-                                    ),
-                                  ]),
-                            )),
+                          onTap: () => _onTabItemListener(device),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(device.deviceName),
+                                Text(
+                                  getStateName(device.state),
+                                  style: TextStyle(
+                                      color: getStateColor(device.state)),
+                                ),
+                              ]),
+                        )),
                         GestureDetector(
                           onTap: () => _onButtonClicked(device),
                           child: Container(
@@ -177,12 +177,12 @@ class DevicesListScreenState extends State<DevicesListScreen> {
                                   itemBuilder: (context, index) {
                                     return Card(
                                       color: (state.chatData[index].alignment ==
-                                          Alignment.centerLeft)
+                                              Alignment.centerLeft)
                                           ? Colors.white
                                           : Colors.blue,
                                       child: Text(
                                           (state.chatData[index].alignment ==
-                                              Alignment.centerLeft)
+                                                  Alignment.centerLeft)
                                               ? state.chatData[index].data
                                               : state.chatData[index].data),
                                     );
@@ -282,38 +282,38 @@ class DevicesListScreenState extends State<DevicesListScreen> {
         });
     subscription =
         nearbyService.stateChangedSubscription(callback: (devicesList) {
-          for (var element in devicesList) {
-            if (Platform.isAndroid) {
-              if (element.state == SessionState.connected) {
-                nearbyService.stopBrowsingForPeers();
-              } else {
-                nearbyService.startBrowsingForPeers();
-              }
-            }
+      for (var element in devicesList) {
+        if (Platform.isAndroid) {
+          if (element.state == SessionState.connected) {
+            nearbyService.stopBrowsingForPeers();
+          } else {
+            nearbyService.startBrowsingForPeers();
           }
+        }
+      }
 
-          setState(() {
-            devices.clear();
-            devices.addAll(devicesList);
-            connectedDevices.clear();
-            connectedDevices.addAll(devicesList
-                .where((d) => d.state == SessionState.connected)
-                .toList());
-          });
-        });
+      setState(() {
+        devices.clear();
+        devices.addAll(devicesList);
+        connectedDevices.clear();
+        connectedDevices.addAll(devicesList
+            .where((d) => d.state == SessionState.connected)
+            .toList());
+      });
+    });
 
     receivedDataSubscription =
         nearbyService.dataReceivedSubscription(callback: (data) {
-          Map j = json.decode(jsonEncode(data));
-          showToast(jsonEncode(data),
-              context: context,
-              axis: Axis.horizontal,
-              alignment: Alignment.center,
-              position: StyledToastPosition.bottom);
-          chatData.add(
-              MessageModel(data: j['message'], alignment: Alignment.centerLeft));
-          BlocProvider.of<MessageBloc>(context)
-              .add(MessageEventBloc(chatData: chatData));
-        });
+      Map j = json.decode(jsonEncode(data));
+      showToast(jsonEncode(data),
+          context: context,
+          axis: Axis.horizontal,
+          alignment: Alignment.center,
+          position: StyledToastPosition.bottom);
+      chatData.add(
+          MessageModel(data: j['message'], alignment: Alignment.centerLeft));
+      BlocProvider.of<MessageBloc>(context)
+          .add(MessageEventBloc(chatData: chatData));
+    });
   }
 }
