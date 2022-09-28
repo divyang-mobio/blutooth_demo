@@ -1,5 +1,5 @@
-import 'chat_screen.dart';
-import 'home_Screen.dart';
+import 'screens/home_Screen.dart';
+import 'screens/chat_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'bloc/message_bloc.dart';
